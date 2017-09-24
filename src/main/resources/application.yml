@@ -1,0 +1,55 @@
+spring:
+    profiles:
+        active: development 
+        #production
+
+    #konfigurasi redis
+
+    #konfigurasi jackson
+    jackson:
+        serialization:
+            indent-output: true
+
+    # spring datasource jpa
+    datasource:
+        driver-class-name: org.mariadb.jdbc.Driver
+        url: jdbc:mariadb://localhost:3306/studentsite?autoReconnect=true
+        username: agung
+        password: ikipiye123
+        poolName: SpringBootHikariCP
+        maximumPoolSize: 5
+        minimumIdle: 3
+        maxLifetime: 2000000
+        connectionTimeout: 30000
+        idleTimeout: 30000
+
+    # spring hibernate
+    jpa:
+        generate-ddl: true
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                format_sql: true
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+            # spring thymeleaf
+    thymeleaf:
+        cache: false
+
+
+        # tomcat konfiguration
+server:
+    tomcat:
+        access_log_enabled: true
+        basedir: target/tomcat
+
+
+# konfigurasi log
+logging:
+    level:
+        org:
+            springframework:
+                web: DEBUG
+            hibernate: DEBUG
